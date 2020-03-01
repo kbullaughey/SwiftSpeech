@@ -48,6 +48,8 @@ public class SpeechRecognizer {
     static var instances = [SpeechRecognizer]()
     
     public typealias ID = UUID
+
+    public var onDevice = false
     
     private var id: SpeechRecognizer.ID
     
@@ -110,7 +112,7 @@ public class SpeechRecognizer {
         recognitionRequest.shouldReportPartialResults = true
         
         // Keep speech recognition data on device
-        recognitionRequest.requiresOnDeviceRecognition = false
+        recognitionRequest.requiresOnDeviceRecognition = onDevice
         
         
         // Create a recognition task for the speech recognition session.
